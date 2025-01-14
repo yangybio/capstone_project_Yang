@@ -1,0 +1,102 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.home {
+  position: relative;
+  @include body;
+
+  &__hero{
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &__header{
+    position: absolute;
+    color: $secondary-text;
+    top:10%;
+  }
+
+  &__hero-image{
+    width: 100%;
+  }
+
+  &__products{
+    background-color: $secondary-background;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 10rem;
+
+    &--highlight {
+      color: red;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  &__card {
+    background-color: $tertiary-background;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%; 
+    max-width: 300px;
+    position: relative;
+    padding: 1rem;
+    overflow: visible; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    margin-bottom: 8rem;
+
+    &:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__image-container {
+    position: absolute;
+    top: -45%; 
+    width: 50%;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: contain; // 确保图片比例不变
+  }
+
+  &__name {
+    margin-top: 4rem; // 为了适应图片溢出的高度
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  &__link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+

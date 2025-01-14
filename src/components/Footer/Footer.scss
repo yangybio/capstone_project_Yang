@@ -1,0 +1,55 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  @include body;
+  background-color: $primary-background;
+  color: $secondary-text;
+  padding: 2rem;
+  text-align: center;
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+
+  &__logo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+
+    &--highlight {
+      color: $tertiary-text;
+    }
+  }
+
+  &__menu {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+
+    &-item {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  &__description {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+    line-height: 1.6;
+    align-content: center;
+    color: $quaternary-text;
+  }
+
+  &__copyright {
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    opacity: 0.8;
+    margin-bottom: 3rem;
+  }
+}
+
+
+

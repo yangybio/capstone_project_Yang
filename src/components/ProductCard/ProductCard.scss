@@ -1,0 +1,101 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.product-card {
+    background-color: $secondary-background;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 19rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    @include body;
+  
+    &__image-wrapper {
+        background-color: $image-background; 
+        padding: 1rem;
+        border-top-left-radius: 20px; 
+        border-top-right-radius: 20px; 
+
+      }
+    
+      &__image {
+        display: block;
+        width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+      }
+  
+    &__content {
+      padding: 16px;
+      text-align: center;
+    }
+  
+    &__title {
+      font-size: 1.5rem;
+      margin: 0;
+      color: $background-header;
+    }
+  
+    &__description {
+      font-size: 0.9rem;
+      color: $quaternary-text;
+      margin: 8px 0 16px;
+    }
+  
+    &__price {
+      font-size: 1.2rem;
+      color: $background-header;
+      margin: 0 0 16px;
+      @include body-regular;
+      font-weight: bold;
+    }
+  
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include body-regular; 
+      font-weight: bold;
+    }
+  
+      &__quantity {
+        display: flex;
+        align-items: center;
+        background-color: $button-background;
+        color: $secondary-text;
+  
+        &-btn {
+          background-color: $button-background;
+          color: $secondary-text;
+          border: none;
+          padding: 6px 12px;
+          cursor: pointer;
+          font-size: 1rem;
+          outline: none !important;
+        }
+  
+        &-value {
+          margin: 0 8px;
+          font-size: 1rem;
+        }
+      }
+  
+      &__add-to-cart {
+        @include body-regular; 
+        background-color: $button-background;
+        color: $secondary-text;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: darkred;
+        }
+      }
+  }
+  

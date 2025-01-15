@@ -48,7 +48,9 @@
       color: $background-header;
       margin: 0 0 16px;
       @include body-regular;
+      &{
       font-weight: bold;
+      }
     }
   
     &__actions {
@@ -56,14 +58,18 @@
       align-items: center;
       justify-content: space-between;
       @include body-regular; 
+      &{
       font-weight: bold;
+      }
     }
   
       &__quantity {
         display: flex;
         align-items: center;
+        &{
         background-color: $button-background;
         color: $secondary-text;
+        }
   
         &-btn {
           background-color: $button-background;
@@ -83,6 +89,7 @@
   
       &__add-to-cart {
         @include body-regular; 
+        &{
         background-color: $button-background;
         color: $secondary-text;
         border: none;
@@ -92,9 +99,6 @@
         font-weight: bold;
         border-radius: 4px;
         transition: background-color 0.3s;
-  
-        &:hover {
-          background-color: darkred;
         }
       }
   }

@@ -1,11 +1,13 @@
 import React from "react";
 import "./Cart.scss";
 
-const Cart = ({ cartItems, total, onClose }) => {
+const Cart = ({ cartItems, total, onIncrease, onDecrease, onClose }) => {
   return (
     <div className="cart">
       <div className="cart__header">
-        <h2 className="cart__title">Cart ({cartItems.length})</h2>
+        <h2 className="cart__title">
+          Cart ({cartItems.length})
+        </h2>
       </div>
       <div className="cart__body">
         {cartItems.map((item) => (
@@ -21,14 +23,14 @@ const Cart = ({ cartItems, total, onClose }) => {
             </div>
             <div className="cart__item-actions">
               <button
-                onClick={() => item.onDecrease(item.id)}
+                onClick={() => onDecrease(item.id)}
                 className="cart__item-btn"
               >
                 -
               </button>
               <span className="cart__item-quantity">{item.quantity}</span>
               <button
-                onClick={() => item.onIncrease(item.id)}
+                onClick={() => onIncrease(item.id)}
                 className="cart__item-btn"
               >
                 +

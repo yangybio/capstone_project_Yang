@@ -5,16 +5,17 @@
     background-color: #f5f5f5;
     border-radius: 10px;
     padding: 20px;
-    width: 80%;
+    width: 75%;
     position: fixed;
-    top: 40%;
+    top: 45%;
     left:50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    @include body;
   
     &__header {
-      text-align: center;
+      text-align: left;
       margin-bottom: 20px;
   
       &-title {
@@ -43,24 +44,28 @@
   
       &-details {
         flex: 1;
+      }
   
         &-title {
           font-size: 1rem;
+          font-weight: bold;
           margin: 0 0 5px;
         }
   
         &-price {
           font-size: 0.9rem;
-          color: #666;
+          font-weight: bold;
+          color: $quaternary-text;
         }
-      }
   
       &-actions {
         display: flex;
         align-items: center;
+        background-color: $tertiary-text;
+      }
   
         &-btn {
-          background-color: red;
+          background-color: $tertiary-text;
           color: #fff;
           border: none;
           border-radius: 4px;
@@ -68,49 +73,47 @@
           cursor: pointer;
           font-size: 1rem;
           margin: 0 5px;
-  
-          &:hover {
-            background-color: darkred;
-          }
         }
   
         &-quantity {
-          font-size: 1rem;
+          font-size: 1rem;         
+          @include body-regular;
+          &{
+          color: $secondary-text;  
+          font-weight: bold; 
+          }      
         }
-      }
+      
     }
   
-    &__footer {
-      &-total {
+
+      &__total {
         display: flex;
         justify-content: space-between;
         font-size: 1.2rem;
         margin-bottom: 20px;
   
-        &-label {
+        &-label,&-value {
           font-weight: bold;
         }
       }
   
-      &-actions {
+      &__actions {
         display: flex;
         justify-content: space-between;
-  
-        &-btn {
-          flex: 1;
-          margin: 0 5px;
-          background-color: red;
-          color: #fff;
-          border: none;
-          border-radius: 4px;
-          padding: 10px 0;
-          cursor: pointer;
-  
-          &:hover {
-            background-color: darkred;
-          }
-        }
+        margin-bottom: 1.5rem;
       }
-    }
+  
+        &__checkout-btn, &__continue-btn {
+          flex: 1;
+          margin: 0 8px;
+          background-color: $tertiary-text;
+          color: $secondary-text;
+          font-weight: bold;
+          border: none;
+          border-radius: 10px;
+          padding: 8px 0;
+          cursor: pointer;
+        }
   }
   

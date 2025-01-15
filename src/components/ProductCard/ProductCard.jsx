@@ -10,7 +10,10 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   const handleAddToCart = () => {
-    onAddToCart(product);
+    if (quantity > 0) {
+        onAddToCart(product, quantity); // 将商品和数量传递到 App
+        setQuantity(0); // 清空选择的数量
+      }
   };
 
   return (

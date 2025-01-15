@@ -1,8 +1,6 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router";
-// import BookingPage from "./pages/BookingPage/BookingPage.jsx";
-// import BookingDetailsPage from "./pages/BookingDetailsPage/BookingDetailsPage.jsx";
-// import BookingConfirmationPage from "./pages/BookingConfirmationPage/BookingConfirmationPage.jsx";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 // import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
@@ -15,34 +13,38 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const handleAddToCart = (product) => {
-    const existingItem = cartItems.find((item) => item.id === product.id);
-    if (existingItem) {
-      setCartItems(
-        cartItems.map((item) =>
+  const handleAddToCart = (product, quantity) => {
+    // 这里的 prevCartItems 是 useState 的当前状态值，实际上是 React 的 setState 函数的回调参数
+    setCartItems((prevCartItems) => {
+      const existingItem = prevCartItems.find((item) => item.id === product.id);
+      if (existingItem) {
+        // 商品已存在，增加数量
+        return prevCartItems.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + quantity }
             : item
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
-    }
+        );
+      } else {
+        // 商品不存在，新增商品
+        return [...prevCartItems, { ...product, quantity }];
+      }
+    });
   };
 
-  const cartItemCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  // 小红标和购物车标题显示商品种类的数量
+  const cartItemCount = cartItems.length;
 
   const handleIncrease = (id) => {
-    setCartItems(
-      cartItems.map((item) =>
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
 
   const handleDecrease = (id) => {
-    setCartItems(
-      cartItems.map((item) =>
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((item) =>
         item.id === id && item.quantity > 1
           ? { ...item, quantity: item.quantity - 1 }
           : item
@@ -67,18 +69,12 @@ function App() {
           path="/products"
           element={<ProductsPage onAddToCart={handleAddToCart} />}
         />
-        {/* <Route path="/booking" element={<BookingPage />} /> */}
-        {/* <Route path="/booking-details" element={<BookingDetailsPage />} /> */}
-        {/* <Route
-          path="/booking-confirmation"
-          element={<BookingConfirmationPage />}
-        /> */}
-
+        <Route path="/checkout" element={<CheckoutPage />} />
         {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>
       {isCartOpen && (
         <Cart
-          cartItems={cartItems}
+          cartItems={Array.isArray(cartItems) ? cartItems : []}
           total={total}
           onIncrease={handleIncrease}
           onDecrease={handleDecrease}

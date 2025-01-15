@@ -29,10 +29,11 @@
       position: absolute;
       top: -5px;
       right: -5px;
-      background-color: red;
-      color: #fff;
+      background-color: $primary-accent;
+      color: $secondary-text;
       font-size: 0.8rem;
-      padding: 3px 6px;
+      font-weight: bold;
+      padding: 2px 8px;
       border-radius: 50%;
     }
   }

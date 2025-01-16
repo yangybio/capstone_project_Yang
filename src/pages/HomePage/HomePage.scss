@@ -14,6 +14,20 @@
     position: absolute;
     color: $secondary-text;
     top:10%;
+    left: 50%;
+    width: 80%;
+    transform: translateX(-50%);  // 水平居中
+    line-height: 2; 
+
+    @include tablet{
+      top:15%;
+      font-size: 3rem;
+    }
+
+    @include desktop{
+      font-size: 4rem;
+      top:20%;
+    }
   }
 
   &__hero-image{
@@ -32,6 +46,14 @@
 
     &--highlight {
       color: red;
+    }
+
+    @include tablet{
+      font-size: 3rem;
+    }
+
+    @include desktop{
+      font-size: 4rem;
     }
   }
 
@@ -63,6 +85,11 @@
       transform: translateY(-5px);
       transition: transform 0.3s ease;
     }
+
+    @include tablet{
+      width: 100%;
+      font-size: 2rem;
+    }
   }
 
   &__image-container {
@@ -72,6 +99,10 @@
     height: auto;
     left: 50%;
     transform: translateX(-50%);
+
+    @include desktop{
+      top: -38%;
+    }
   }
 
   &__image {
@@ -85,9 +116,19 @@
     font-size: 1.25rem;
     font-weight: bold;
     color: #333;
+
+    @include tablet{
+      width: 100%;
+      font-size: 1.5rem;
+    }
+
+    @include desktop{
+      font-size: 2rem;
+    }
   }
 
   &__link {
+    all: unset;
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
@@ -95,6 +136,102 @@
 
     &:hover {
       text-decoration: underline;
+    }
+
+    @include tablet{
+      width: 100%;
+      font-size: 1.2rem;
+    }
+
+    @include desktop{
+      font-size: 1.5rem;
+    }
+  }
+
+  &__introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    overflow: hidden;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    &-image-container {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    &-image {
+      width: 100%;
+      object-fit: cover;
+      border-top-left-radius: 8px; 
+      border-top-right-radius: 8px; 
+      padding-bottom: 0;
+      margin-bottom: 0;
+
+      @include tablet {
+        border-top-left-radius: 8px; // 保留顶部圆角
+        border-bottom-left-radius: 8px; // 在横向布局时增加左下圆角
+        border-top-right-radius: 0; // 去掉右上圆角
+      }
+    }
+
+    &-text-container {
+      flex: 1;
+      text-align: center;
+      background-color: $secondary-background;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom-left-radius: 8px; 
+      border-bottom-right-radius: 8px;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      @include tablet {
+        text-align: left;
+        border-bottom-left-radius: 0; // 横向布局时取消左下圆角
+        border-top-right-radius: 8px; // 增加右上圆角
+        border-bottom-right-radius: 8px; // 保持右下圆角
+      }
+    }
+
+    &-header {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      width: 80%;
+      text-align: center;
+
+      &--highlight {
+        color: $tertiary-text;
+      }
+
+      @include desktop{
+        font-size: 2.5rem;
+      }
+    }
+
+    &-description {
+      width: 80%;
+      @include body-regular;
+      &{
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      @include desktop{
+        font-size: 1.5rem;
+      }
     }
   }
 }

@@ -1,6 +1,8 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 .header {
+  @include body;
+  &{
   background-color: $background-header;
   color: white;
   text-align: center;
@@ -8,21 +10,70 @@
   align-items: center;
   justify-content: space-around;
   position: relative;
+  }
+
   @include tablet {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 2rem 8rem 2rem;
+    padding: 1.5rem 2rem 2rem 2rem;
   }
   @include desktop {
-    padding: 2rem 8rem 7rem 8rem;
+    padding: 2rem 3rem 2rem 3rem;
+    justify-content: space-between;
   }
+
+  &__menu{
+    all: unset; /* 清除所有样式 */
+    cursor: pointer; 
+    background-color: $background-header;
+    border:none;
+
+    &:focus {
+      outline: none; /* 全局移除焦点框 */
+    }
+
+    &-icon{
+      object-fit: contain;
+      width: 2rem;
+
+      @include tablet{
+        width: 4rem; 
+      }
+
+      @include desktop{
+        width: 5rem;
+      }
+
+    }
+  }
+
+  &__title{
+    font-size: 2rem;
+
+      @include tablet{
+        font-size: 3rem;
+      }
+
+      @include desktop{
+        font-size: 4rem;
+      }
+    }
 
   &__cart {
     position: relative;
     cursor: pointer;
 
     &-icon {
-      width: 30px;
+      width: 2rem;
+
+      @include tablet{
+        width: 3rem;
+      }
+
+      @include desktop{
+        width: 4rem;
+      }
+
     }
 
     &-badge {
@@ -37,8 +88,4 @@
       border-radius: 50%;
     }
   }
-}
-
-h1{
-  font-size: 2em;
 }

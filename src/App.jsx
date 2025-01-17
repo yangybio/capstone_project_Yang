@@ -7,11 +7,15 @@ import Footer from "./components/Footer/Footer.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import ProductsPage from "./pages/ProductsPage/ProductsPage.jsx";
 import Cart from "./components/Cart/Cart.jsx";
-import { useState } from "react";
+import Contact from "./components/Contact/Contact.jsx";
+import { useState, useRef } from "react";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Ref to the footer element
+  const footerRef = useRef(null);
 
   const handleAddToCart = (product, quantity) => {
     // 这里的 prevCartItems 是 useState 的当前状态值，实际上是 React 的 setState 函数的回调参数
@@ -29,6 +33,10 @@ function App() {
         return [...prevCartItems, { ...product, quantity }];
       }
     });
+  };
+
+  const handleScrollToFooter = () => {
+    footerRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   // 小红标和购物车标题显示商品种类的数量
@@ -62,6 +70,7 @@ function App() {
       <Header
         cartItemCount={cartItemCount}
         onCartIconClick={() => setIsCartOpen(!isCartOpen)}
+        onMenuClick={handleScrollToFooter} 
       />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -81,7 +90,9 @@ function App() {
           onClose={() => setIsCartOpen(false)}
         />
       )}
-      <Footer />
+      <Contact />
+      {/* Add ref to Footer */}
+      <Footer ref={footerRef}/>
     </BrowserRouter>
   );
 }

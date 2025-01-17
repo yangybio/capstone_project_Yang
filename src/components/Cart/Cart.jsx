@@ -1,13 +1,20 @@
 import React from "react";
 import "./Cart.scss";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ cartItems, total, onIncrease, onDecrease, onClose }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    onClose();
+    navigate("/checkout");
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="cart">
       <div className="cart__header">
-        <h2 className="cart__title">
-          Cart ({cartItems.length})
-        </h2>
+        <h2 className="cart__title">Cart ({cartItems.length})</h2>
       </div>
       <div className="cart__body">
         {cartItems.map((item) => (
@@ -45,7 +52,9 @@ const Cart = ({ cartItems, total, onIncrease, onDecrease, onClose }) => {
           <span className="cart__total-value">${total.toFixed(2)}</span>
         </div>
         <div className="cart__actions">
-          <button className="cart__checkout-btn">Proceed to Checkout</button>
+          <button onClick={handleNavigate} className="cart__checkout-btn">
+            Proceed to Checkout
+          </button>
           <button className="cart__continue-btn" onClick={onClose}>
             Continue shopping
           </button>

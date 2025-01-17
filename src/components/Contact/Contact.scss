@@ -1,0 +1,71 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.contact {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    @include body;
+
+      &__content {
+        position: absolute;
+        top:40%;
+        left: 50%;
+        width: 80%;
+        transform: translateX(-50%);  
+        text-align: center;
+        color: white;
+        z-index: 1;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      &__image{
+        width: 100%;
+        object-fit: cover;
+
+      }
+      
+      &__title {
+        font-size: 2rem;
+        font-weight: bold;
+
+        @include tablet{
+          font-size: 3rem;
+        }
+    
+        @include desktop{
+          font-size: 4rem;
+        }
+      }
+      
+      &__highlight {
+        color: $tertiary-text;
+      }
+      
+      &__button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background-color: $tertiary-text;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        @include tablet{
+          font-size: 1.5rem;
+        }
+    
+        @include desktop{
+          font-size: 2rem;
+        }
+      }
+  }
+  
+  
+  

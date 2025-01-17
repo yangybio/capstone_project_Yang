@@ -21,17 +21,45 @@
     &--highlight {
       color: $tertiary-text;
     }
+
+    @include tablet{
+      font-size: 3rem;
+    }
+
+    @include desktop{
+      font-size: 4rem;
+    }
   }
 
   &__menu {
     list-style: none;
     padding: 0;
     margin: 1rem 0;
+    line-height: 2; 
 
     &-item {
       margin: 0.5rem 0;
       font-size: 1.2rem;
       font-weight: bold;
+
+      @include tablet{
+        font-size: 1.5rem;
+      }
+  
+      @include desktop{
+        font-size: 2rem;
+      }
+    }
+
+    &-link{
+      all: unset;
+      color: inherit;
+      transition: color 0.3s;
+      cursor: pointer;
+
+      &:focue{
+        text-decoration: none;
+      }
     }
   }
 
@@ -41,6 +69,14 @@
     line-height: 1.6;
     align-content: center;
     color: $quaternary-text;
+
+    @include tablet{
+      font-size: 1.2rem;
+    }
+
+    @include desktop{
+      font-size: 1.5rem;
+    }
   }
 
   &__copyright {

@@ -2,38 +2,48 @@ import "./HomePage.scss";
 import { useNavigate } from "react-router-dom";
 import hero from "../../assets/icons/hero.svg";
 import ads from "../../assets/icons/ads.svg";
-import Bands from "../../assets/icons/Bands.svg";
-import Rings from "../../assets/icons/Rings.svg";
-import Bar from "../../assets/icons/Bar.svg";
+import React, { useState, useEffect } from "react"; 
 
 function HomePage() {
-  const productData = [
-    {
-      id: 1,
-      imgSrc: Bands,
-      title: "Elastic Bands",
-      linkText: "Learn More",
-    },
-    {
-      id: 2,
-      imgSrc: Rings,
-      title: "Gymnastic Rings",
-      linkText: "Learn More",
-    },
-    {
-      id: 3,
-      imgSrc: Bar,
-      title: "Pull-up Bar",
-      linkText: "Learn More",
-    },
-  ];
-
+  const [products, setProducts] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/products"); // 导航到产品页面
+    navigate("/bands"); // 导航到产品页面
     window.scrollTo(0, 0);
   };
+
+  // 修改点：从后端获取产品数据
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/`);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const data = await response.json();
+        setProducts(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return <div className="home">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="home">Error: {error}</div>;
+  }
 
   return (
     <>
@@ -52,7 +62,7 @@ function HomePage() {
             Our <span className="home__title--highlight">Products</span>
           </h2>
           <div className="home__list">
-            {productData.map((product) => (
+            {products.map((product) => (
               <div className="home__card" key={product.id}>
                 <div className="home__image-container">
                   <img

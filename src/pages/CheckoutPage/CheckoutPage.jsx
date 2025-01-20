@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./CheckoutPage.scss";
 import InputField from "../../components/InputField/InputField";
-import Cart from "../../components/Cart/Cart";
 
-const CheckoutPage = ({ cartItems=[], total=0, onIncrease, onDecrease, onClose }) => {
+const CheckoutPage = ({ cartItems = [], total = 0, onSubmit }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,10 +34,10 @@ const CheckoutPage = ({ cartItems=[], total=0, onIncrease, onDecrease, onClose }
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (validateForm()) {
       alert("Payment processed successfully!");
+      onSubmit(formData); // 调用父组件传入的提交回调
     }
   };
 
@@ -47,7 +46,8 @@ const CheckoutPage = ({ cartItems=[], total=0, onIncrease, onDecrease, onClose }
       {/* Form Section */}
       <div className="checkout-page__form">
         <h2 className="checkout-page__form-title">Verify</h2>
-        <form onSubmit={handleSubmit} className="checkout-page__form-content">
+        <div className="checkout-page__form-content">
+        <div className="checkout-page__content-top">
           <InputField
             label="Name"
             type="text"
@@ -72,6 +72,10 @@ const CheckoutPage = ({ cartItems=[], total=0, onIncrease, onDecrease, onClose }
             onChange={handleInputChange}
             error={errors.phone}
           />
+          </div>
+
+          <div className="checkout-page__content-shipping">
+          <h2 className="checkout-page__form-subtitle">Shipping information</h2>
           <InputField
             label="Address"
             type="text"
@@ -100,44 +104,45 @@ const CheckoutPage = ({ cartItems=[], total=0, onIncrease, onDecrease, onClose }
             value={formData.country}
             onChange={handleInputChange}
           />
-          <button type="submit" className="checkout-page__submit-btn">
-            Submit
-          </button>
-        </form>
+          </div>
+        </div>
       </div>
 
       {/* Summary Section */}
       <div className="checkout-page__summary">
-          <h2 className="checkout-page__title">Order Summary</h2>
-          <div className="checkout-page__items">
-            {cartItems.map((item) => (
-              <div key={item.id} className="checkout-page__item">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="checkout-page__item-image"
-                />
-                <div className="checkout-page__item-details">
-                  <p className="checkout-page__item-title">{item.title}</p>
-                  <p className="checkout-page__item-quantity">
-                    Quantity: {item.quantity}
-                  </p>
-                  <p className="checkout-page__item-price">
-                    ${item.price.toFixed(2)}
-                  </p>
-                </div>
+        <h2 className="checkout-page__title">Order Summary</h2>
+        <div className="checkout-page__items">
+          {cartItems.map((item) => (
+            <div key={item.band_id} className="checkout-page__item">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="checkout-page__item-image"
+              />
+              <div className="checkout-page__item-details">
+                <p className="checkout-page__item-title">{item.title}</p>
+                <p className="checkout-page__item-quantity">
+                  Quantity: {item.quantity}
+                </p>
+                <p className="checkout-page__item-price">
+                ${Number(item.price).toFixed(2)}
+                </p>
               </div>
-            ))}
-          </div>
-          <div className="checkout-page__total">
-            <span>Total:</span>
-            <span>${total.toFixed(2)}</span>
-          </div>
-          <button className="checkout-page__close-btn" onClick={onClose}>
-            Continue Shopping
-          </button>
+            </div>
+          ))}
         </div>
+        <div className="checkout-page__total">
+          <span>Total:</span>
+          <span>${total.toFixed(2)}</span>
+        </div>
+        <button
+          className="checkout-page__close-btn"
+          onClick={handleSubmit}
+        >
+          Continue Shopping
+        </button>
       </div>
+    </div>
   );
 };
 

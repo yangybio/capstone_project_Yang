@@ -16,11 +16,14 @@ const ProductCard = ({ product, onAddToCart }) => {
       }
   };
 
+  console.log("test images", product.imgSrc);
+
+
   return (
     <div className="product-card">
       <div className="product-card__image-wrapper">
         <img
-          src={product.image}
+          src={product.imgSrc}
           alt={product.title}
           className="product-card__image"
         />

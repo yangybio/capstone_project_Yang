@@ -22,7 +22,7 @@ function Footer(props, ref) {
             <button className="footer__menu-link" onClick={() => handleNavigation('/')}>Home</button>
           </li>
           <li className="footer__menu-item">
-            <button className="footer__menu-link" onClick={() => handleNavigation('/products')}>Bands</button>
+            <button className="footer__menu-link" onClick={() => handleNavigation('/bands')}>Bands</button>
           </li>
           <li className="footer__menu-item">Rings</li>
           <li className="footer__menu-item">Bars</li>

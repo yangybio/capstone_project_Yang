@@ -11,6 +11,8 @@ const Cart = ({ cartItems, total, onIncrease, onDecrease, onClose }) => {
     window.scrollTo(0, 0);
   };
 
+  console.log("Cart Items:", cartItems);
+
   return (
     <div className="cart">
       <div className="cart__header">
@@ -26,7 +28,9 @@ const Cart = ({ cartItems, total, onIncrease, onDecrease, onClose }) => {
             />
             <div className="cart__item-details">
               <p className="cart__item-title">{item.title}</p>
-              <p className="cart__item-price">${item.price.toFixed(2)}</p>
+              {/* <p className="cart__item-price">${typeof item.price === "number" ? item.price.toFixed(2) : "0.00"}</p> */}
+              <p className="cart__item-price">${Number(item.price).toFixed(2)}</p>
+
             </div>
             <div className="cart__item-actions">
               <button

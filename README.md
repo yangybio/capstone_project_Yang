@@ -1,10 +1,10 @@
 # Project Title
 
-Calis*Tenacy
+**CalisTenancy**
 
 ## Overview
 
-CalisTenacy is a fitness-focused online platform offering premium calisthenics products designed to help users achieve their fitness goals. From resistance bands and gymnastic rings to other calisthenics equipment, CalisTenacy  provides high-quality products that are both functional and stylish. We aim to create a community for fitness enthusiasts of all levels, providing tools to enhance their workout experience and improve performance.
+**CalisTenancy** is a fitness-focused online platform offering premium calisthenics products designed to help users achieve their fitness goals. From resistance bands and gymnastic rings to other calisthenics equipment, **CalisTenancy** provides high-quality products that are both functional and stylish. We aim to create a community for fitness enthusiasts of all levels, providing tools to enhance their workout experience and improve performance.
 
 ## Problem
 
@@ -98,16 +98,17 @@ The calisthenics equipment market is growing, but many fitness enthusiasts strug
 ### Mockups
 
 #### Home Page
-![]((assets/icons/HomePage.png)
+![](assets/icons/HomePage.png)
 
-#### bands Page
+#### Bands Page
 ![](assets/icons/BandsPage.png)
 
-#### cart Page
+#### Cart Page
 ![](assets/icons/CartPage.png)
 
-#### checkout Page
+#### Checkout Page
 ![](assets/icons/CheckoutPage.png)
+
 
 ### Endpoints
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./InputField.scss";
 
-const InputField = ({ label, type, name, value, onChange, error }) => {
+const InputField = ({ label, type, name, value, onChange, placeholder, error }) => {
   return (
     <div className="input-field">
       <label className="input-field__label">{label}</label>
@@ -11,6 +11,7 @@ const InputField = ({ label, type, name, value, onChange, error }) => {
         name={name}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
       {error && <span className="input-field__error">{error}</span>}
     </div>

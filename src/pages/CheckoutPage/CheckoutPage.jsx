@@ -71,11 +71,13 @@ const CheckoutPage = ({ cartItems = [], total = 0, onSubmit }) => {
             value={formData.phone}
             onChange={handleInputChange}
             error={errors.phone}
+            placeholder="+12 345 678 6960"
           />
           </div>
 
-          <div className="checkout-page__content-shipping">
           <h2 className="checkout-page__form-subtitle">Shipping information</h2>
+
+          <div className="checkout-page__content-shipping">
           <InputField
             label="Address"
             type="text"

@@ -32,7 +32,7 @@ function Footer(props, ref) {
           achieve your fitness goals. From resistance bands to gymnastic rings,
           every product is crafted with quality and performance in mind.
         </p>
-        <p className="footer__copyright">Copyright ©2023</p>
+        <p className="footer__copyright">Copyright ©2025</p>
       </div>
     </footer>
   );

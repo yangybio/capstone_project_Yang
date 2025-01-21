@@ -25,6 +25,7 @@
       &__image{
         width: 100%;
         object-fit: cover;
+        display: block; //delete the gap
 
       }
       

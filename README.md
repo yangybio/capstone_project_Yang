@@ -1,6 +1,6 @@
 # Project Title
 
-# **CalisTenancy**
+## Calis*Tenancy*
 
 ## Overview
 
@@ -67,14 +67,11 @@ The calisthenics equipment market is growing, but many fitness enthusiasts strug
 
 ### APIs
 
-#### External APIs
 
-- **Stripe** for payment processing.
 
 #### Internal APIs
 
 - **Product catalog API** for listing and searching calisthenics equipment.
-- **User authentication and account management API**.
 - **Order management API** for tracking purchases and sales.
 
 ## Sitemap
@@ -87,6 +84,8 @@ The calisthenics equipment market is growing, but many fitness enthusiasts strug
 
 ## Future Enhancements
 
+- **Stripe** for payment processing.
+- **User authentication and account management API**
 - **Customer Support Page**: Providing contact information, FAQs, and live chat support.
 - **Mobile app development** for iOS and Android to enhance the shopping experience.
 - **Personalized recommendations** based on product usage and fitness goals.
@@ -98,16 +97,16 @@ The calisthenics equipment market is growing, but many fitness enthusiasts strug
 ### Mockups
 
 #### Home Page
-![](assets/icons/HomePage.png)
+![](src/assets/icons/HomePage.png)
 
 #### Bands Page
-![](assets/icons/BandsPage.png)
+![](src/assets/icons/BandsPage.png)
 
 #### Cart Page
-![](assets/icons/CartPage.png)
+![](src/assets/icons/CartPage.png)
 
 #### Checkout Page
-![](assets/icons/CheckoutPage.png)
+![](src/assets/icons/CheckoutPage.png)
 
 
 ### Endpoints
